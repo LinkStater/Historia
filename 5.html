@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+
+    <style>
+        * {
+            color: white;
+            font-size: 25px;
+            margin: 0px;
+        }
+
+
+        #box {
+            display: flex;
+        }
+
+
+        body {
+            background-image: url("imagens/Floresta.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #box_up {
+            height: 50%;
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        #box_down {
+            height: 50%;
+            width: 100%;
+            background-color: #000000b3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar {
+            height: 90%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div id="box_up">
+        <img class="avatar" src="imagens/menino.png">
+        <img class="avatar" src="imagens/Guaxinim.png">
+    </div>
+
+
+
+    <div id="box_down">
+
+
+
+
+
+        <div style="width: 70%;">
+            <p id="caixa">Teste</p>
+        </div>
+
+
+
+        <div style="width: 10%;">
+            <img src="imagens/botao.gif" width="50px" height="50px" onclick="window.location.href='2.html'">
+        </div>
+
+
+
+
+    </div>
+
+
+
+    <script>
+
+
+        var nome = localStorage.getItem("nome");
+        var personagem = localStorage.getItem("personagem");
+
+
+        //if (personagem == "menino") document.getElementById("avatar").src = "imagens/menino.png";
+        //else document.getElementById("avatar").src = "imagens/Menina.png";
+
+
+        const texto = `${nome} encontra um guaxinim enorme, com pelos desgrenhados e olhos tristes.`;
+        const caixa = document.getElementById("caixa");
+        let i = 0;
+
+        function escrever() {
+            if (i < texto.length) {
+                caixa.innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(escrever, 50); // velocidade (ms) - ajuste como quiser
+            }
+        }
+
+        escrever();
+
+
+    </script>
+
+</body>
+
+</html>

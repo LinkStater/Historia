@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+
+    <style>
+        img {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            background-color: black;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        #div {
+            display: flex;
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <p style="color: white;">Você é Garoto ou Garota?</p>
+
+
+    <div id="div">
+        <img src="imagens/Menina.png" onclick="salvar('menina')">
+        <img src="imagens/menino.png" onclick="salvar('menino')">
+    </div>
+
+
+
+    <script>
+
+        function salvar(param) {
+
+            localStorage.setItem("personagem", param); // chave, valor
+            window.location.href = "3.html";
+        }
+
+
+    </script>
+
+</body>
+
+</html>

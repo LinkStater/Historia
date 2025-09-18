@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>O Último Tanuki</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+
+</head>
+
+<body>
+
+    <img id="background" src="imagens/Captura de tela 2025-09-18 092510.jpg">
+
+
+    <div id="d_box">
+    
+    <div style="width: 90%;">
+        <p id="caixa"></p>
+    </div>
+
+
+    <div style="width: 10%;">
+        <img src="imagens/botao.gif" width="50px" height="50px" onclick="window.location.href='2.html'">
+    </div>
+
+
+</div>
+
+    <script>
+
+
+
+        //const nome = localStorage.getItem("nomeJogador");
+
+
+        const texto = `No interior do Japão, uma vila vive às margens de uma floresta antiga que está prestes a ser derrubada para virar estrada.`;
+        const caixa = document.getElementById("caixa");
+        let i = 0;
+
+        function escrever() {
+            if (i < texto.length) {
+                caixa.innerHTML += texto.charAt(i);
+                i++;
+                setTimeout(escrever, 50); // velocidade (ms) - ajuste como quiser
+            }
+        }
+
+        escrever();
+    </script>
+
+
+
+</body>
+
+</html>

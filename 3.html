@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>O Último Tanuki</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1 style="color: white;">Olá</h1>
+
+    <input id="nome" type="text" placeholder="Digite seu nome">
+    <button onclick="salvar()">Salvar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+
+        function salvar() {
+
+            const nome = document.getElementById("nome").value;
+
+            localStorage.setItem("nome", nome); // chave, valor
+            window.location.href = "4.html"
+
+        }
+
+
+    </script>
+</body>
+
+</html>
