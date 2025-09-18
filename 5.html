@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
@@ -7,6 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,8 +80,8 @@
 
 
     <div id="box_up">
-        <img class="avatar" src="imagens/menino.png">
-        <img class="avatar" src="imagens/Guaxinim.png">
+        <img class="avatar" id="avatar_1" src="imagens/menino.png">
+        <img class="avatar" id="avatar_2" src="imagens/Guaxinim.png">
     </div>
 
 
@@ -96,7 +99,7 @@
 
 
         <div style="width: 10%;">
-            <img src="imagens/botao.gif" width="50px" height="50px" onclick="window.location.href='2.html'">
+            <img src="imagens/botao.gif" width="50px" height="50px" onclick="soma()">
         </div>
 
 
@@ -109,61 +112,90 @@
 
 
     <script>
-
-
+        var contador = 1;
         var nome = localStorage.getItem("nome");
         var personagem = localStorage.getItem("personagem");
+        var texto;
+        var i = 0; // agora global
+      
+        function soma() {
+          contador++;
+          mostrarTexto();
+        }
+      
+        function mostrarTexto() {
+          i = 0; // reseta a contagem sempre que troca de texto
+
 
 
         //if (personagem == "menino") document.getElementById("avatar").src = "imagens/menino.png";
         //else document.getElementById("avatar").src = "imagens/Menina.png";
 
 
-        const texto = `${nome} encontra um guaxinim enorme, com pelos desgrenhados e olhos tristes.`;
-        const caixa = document.getElementById("caixa");
-        let i = 0;
 
+          switch (contador) {
+            case 1:
+              texto = `TESTE 1`;
+              break;
+            case 2:
+              texto = `TESTE 2`;
+              document.getElementById("avatar_1").src = "imagens/Menina.png";
+              break;
+
+              case 3:
+              texto = `TESTE 2`;
+              document.getElementById("avatar_2").src = "imagens/Raiva.gif";
+              break;
+          }
+
+
+
+          document.getElementById("caixa").innerHTML = ""; // limpa a caixa
+          escrever();
+        }
+      
         function escrever() {
-            if (i < texto.length) {
-                caixa.innerHTML += texto.charAt(i);
-                i++;
-                setTimeout(escrever, 50); // velocidade (ms) - ajuste como quiser
+          const caixa = document.getElementById("caixa");
+      
+          if (i < texto.length) {
+            caixa.innerHTML += texto.charAt(i);
+            i++;
+            setTimeout(escrever, 50); // chama de novo até acabar
+          }
+        }
+      
+        // chama o primeiro texto quando abrir a página
+        mostrarTexto();
+      </script>
+
+
+
+    <script>
+        function abrirTelaCheia() {
+            if (!document.fullscreenElement) {
+                // Se NÃO estiver em tela cheia → entra
+                document.getElementById("btn_").innerText = "Entrar tela cheia";
+                const elem = document.documentElement;
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            } else {
+                // Se JÁ estiver em tela cheia → sai
+                document.getElementById("btn_").innerText = "Sair tela cheia";
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             }
         }
-
-        escrever();
-
-
     </script>
-
-
-
-<script>
-    function abrirTelaCheia() {
-      if (!document.fullscreenElement) {
-        // Se NÃO estiver em tela cheia → entra
-        document.getElementById("btn_").innerText = "Entrar tela cheia";
-        const elem = document.documentElement;
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) { 
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { 
-          elem.msRequestFullscreen();
-        }
-      } else {
-        // Se JÁ estiver em tela cheia → sai
-        document.getElementById("btn_").innerText = "Sair tela cheia";
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      }
-    }
-  </script>
 
 </body>
 
