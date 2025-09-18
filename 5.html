@@ -17,6 +17,16 @@
 
 
     <style>
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+        }
+
         * {
             color: white;
             font-size: 25px;
@@ -63,6 +73,8 @@
 
 <body>
 
+    <button id="btn_" onclick="abrirTelaCheia()">Entrar em Tela Cheia</button>
+
 
     <div id="box_up">
         <img class="avatar" src="imagens/menino.png">
@@ -78,7 +90,7 @@
 
 
         <div style="width: 70%;">
-            <p id="caixa">Teste</p>
+            <p id="caixa"></p>
         </div>
 
 
@@ -91,6 +103,8 @@
 
 
     </div>
+
+
 
 
 
@@ -121,6 +135,35 @@
 
 
     </script>
+
+
+
+<script>
+    function abrirTelaCheia() {
+      if (!document.fullscreenElement) {
+        // Se NÃO estiver em tela cheia → entra
+        document.getElementById("btn_").innerText = "Entrar tela cheia";
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { 
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { 
+          elem.msRequestFullscreen();
+        }
+      } else {
+        // Se JÁ estiver em tela cheia → sai
+        document.getElementById("btn_").innerText = "Sair tela cheia";
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+      }
+    }
+  </script>
 
 </body>
 
